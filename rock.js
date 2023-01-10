@@ -1,9 +1,8 @@
 import {getRandomRockGridPosition} from "./grid.js";
-import {onSnake} from "./snake.js";
 
 const numberOfRocks = 4;
 
-let rocks = getRandomRockGridPosition(numberOfRocks);
+export let rocks = getRandomRockGridPosition(numberOfRocks);
 
 
 export function draw(gameBoard){
@@ -15,10 +14,4 @@ export function draw(gameBoard){
         gameBoard.appendChild(rockElement)
         }
     )
-}
-
-export function update(){
-    if(onSnake(rocks)){
-        alert("trfiłeś na przeszkodę")
-    }
 }

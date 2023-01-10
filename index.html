@@ -41,6 +41,13 @@
 
     }
 
+    .food2{
+
+      background-color: #940535;
+      border: .25vmin solid black;
+
+    }
+
     .rock{
 
         background-color: #333433;
@@ -48,20 +55,58 @@
 
     }
 
-    h4{
+    #info{
         color: white;
         position: absolute;
         left: 0;
         top: 0;
     }
 
+    .legend{
+    }
+
   </style>
 
   <script src="game.js" defer type="module"></script>
+
+  <script>
+  function getScores(){
+
+    let scores = document.getElementById("scores")
+    for (let i = 0; i < localStorage.length; i++){
+      let player = document.createElement("p");
+      player.classList.add("player")
+      player.innerHTML = localStorage.key(i) + ": " + localStorage.getItem(localStorage.key(i))
+      scores.appendChild(player)
+    }
+  }
+
+  function clearScores(){
+    let oldScores = document.getElementsByClassName("player")
+    console.log(oldScores)
+
+    document.getElementById("scores").replaceChildren()
+  }
+
+  </script>
 </head>
 <body>
 
-<h4 id="score">Wynik: 0</h4>
+<div id="info">
+  <h4 id="score">Wynik: 0</h4>
+  <p id="pause-info">Naciśnij klawisz "p" by zapauzować/odpauzować grę</p>
+  <div class="legend"></div>
+  <div id="score-board">
+  <h2>Ostatnie wyniki:</h2>
+    <button id="get-scores" onclick="getScores()" >Pobierz wyniki</button>
+    <button id="clear-scores" onclick="clearScores()" >Wyczyść listę wyników</button>
+    <div id="scores">
+
+    </div>
+  </div>
+
+</div>
+
 <div id="game-board">
 </div>
 
